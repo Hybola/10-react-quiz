@@ -9,13 +9,13 @@ function Options() {
         <button
           className={`btn btn-option ${i === answer ? "answer" : ""} ${
             hasAnswered
-              ? index === questions[i].correctOption
+              ? i === questions[index].correctOption
                 ? "correct"
                 : "wrong"
               : ""
           }`}
           key={option}
-          onClick={() => dispatch({ type: "newAnswer", payload: index })}
+          onClick={() => dispatch({ type: "newAnswer", payload: i })}
           disabled={hasAnswered}>
           {option}
         </button>

@@ -1,6 +1,3 @@
-import { useEffect, useReducer } from "react";
-// import DateCounter from "./DateCounter";
-// import DateCounter from "./DateCounter-Redo";
 import Header from "./Header";
 import Main from "./Main";
 import Loader from "./Loader";
@@ -14,16 +11,7 @@ import Footer from "./Footer";
 import Timer from "./Timer";
 import { useQuiz } from "../contexts/QuizContext";
 export default function App() {
-  const {
-    status,
-    index,
-    answer,
-    points,
-    highscore,
-    numQuestions,
-    maxPossiblePoints,
-    dispatch,
-  } = useQuiz();
+  const { status } = useQuiz();
 
   return (
     <div className="app">
@@ -38,25 +26,12 @@ export default function App() {
             <Question />
             <Footer>
               <Timer />
-              <NextButton
-                dispatch={dispatch}
-                answer={answer}
-                index={index}
-                numQuestions={numQuestions}
-              />
+              <NextButton />
             </Footer>
           </>
         )}
-        {status === "finished" && (
-          <FinishScreen
-            points={points}
-            maxPossiblePoints={maxPossiblePoints}
-            highscore={highscore}
-            dispatch={dispatch}
-          />
-        )}
+        {status === "finished" && <FinishScreen />}
       </Main>
     </div>
   );
-  // return <DateCounter />;
 }

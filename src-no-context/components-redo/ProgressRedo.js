@@ -7,7 +7,10 @@ function ProgressRedo({
 }) {
   return (
     <header className="progress">
-      <progress max={numQuestions} value={index} />
+      <progress
+        max={numQuestions}
+        value={index + Number(userSelectedOption !== null)}
+      />
       <p>
         question: <strong>{index + 1}</strong>/{numQuestions}
       </p>
